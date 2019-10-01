@@ -65,7 +65,9 @@ app.use("/admin",admin);
     
 // })
 app.get("/",(req,res)=>{
-    res.render('dangnhap');
+    Bank.find({},(err,bank)=>{
+        res.render("dangnhap",{bank:bank});
+    })
 })
 
 app.get("/Buoc-1",(req,res)=>{
