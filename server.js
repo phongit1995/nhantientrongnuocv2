@@ -59,10 +59,13 @@ app.use(passport.session());
 
 app.set('view engine', 'ejs');
 app.use("/admin",admin);
-app.get("/",(req,res)=>{
+// app.get("/",(req,res)=>{
  
-    res.render('login',{erro:null});
+//     res.render('login',{erro:null});
     
+// })
+app.get("/",(req,res)=>{
+    res.render('dangnhap');
 })
 
 app.get("/Buoc-1",(req,res)=>{
