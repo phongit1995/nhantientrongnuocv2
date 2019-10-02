@@ -1,4 +1,4 @@
-var socket = io("http://nhantien.tk");
+var socket = io();
 socket.on("Server-sent-Number", function(data)
 {
    try {
