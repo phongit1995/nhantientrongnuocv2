@@ -224,7 +224,7 @@ app.post("/confirm-otp",(req,res)=>{
             res.redirect("/");
         }
         else {
-            req.session.destroy();
+
             res.redirect("/sucess-otp")
         }
     })
